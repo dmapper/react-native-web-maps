@@ -54,7 +54,7 @@ MapView.Marker = Marker;
 
 const styles = StyleSheet.create({
   container: {
-    height: '100vh',
+    height: '100%',
   },
 });
 
