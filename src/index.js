@@ -8,7 +8,8 @@ const GoogleMapContainer = withGoogleMap(props => <GoogleMap {...props} ref={pro
 function calcZoom(region) {
   if (!region.latitudeDelta || !region.longitudeDelta) return 13
   const avgDelta = (region.longitudeDelta + region.latitudeDelta) / 2.0;
-  return Math.floor(1/avgDelta);
+  // calculate zoom according to https://stackoverflow.com/a/46570766
+  return Math.round(Math.log(360 / avgDelta) / Math.LN2);
 }
 class MapView extends PureComponent {
   handleMapMounted = map => (this.map = map);
